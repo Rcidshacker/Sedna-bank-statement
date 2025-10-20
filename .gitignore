@@ -1,0 +1,12 @@
+# Ignore the secret API key file
+.env
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore the temporary upload directory
+temp_uploads/
+
+# Ignore the SQLite database file
+intellistatement.db

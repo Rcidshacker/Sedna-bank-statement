@@ -1,0 +1,17 @@
+fastapi 
+uvicorn[standard] 
+pydantic 
+python-dotenv 
+unstructured[pdf] 
+openai 
+pandas 
+numpy 
+lxml 
+streamlit 
+altair 
+pdf2image 
+opencv-python 
+google-cloud-vision 
+sqlalchemy
+openpyxl
+Pillow

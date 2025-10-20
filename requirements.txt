@@ -1,17 +1,18 @@
-fastapi 
-uvicorn[standard] 
-pydantic 
-python-dotenv 
-unstructured[pdf] 
-openai 
-pandas 
-numpy 
-lxml 
-streamlit 
-altair 
-pdf2image 
-opencv-python 
-google-cloud-vision 
+# --- Backend Server ---
+fastapi
+uvicorn[standard]
+python-dotenv
+pydantic
+pydantic-settings
 sqlalchemy
+
+# --- Frontend UI ---
+streamlit
+pandas
+altair
 openpyxl
-Pillow
+
+# --- AI & Data Processing ---
+openai
+unstructured[pdf]
+opencv-python

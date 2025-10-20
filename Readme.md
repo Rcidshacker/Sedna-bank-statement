@@ -93,14 +93,117 @@ Required Dependencies:
 - opencv-python
 - google-cloud-vision
 
-### Configuration
+### Environment Configuration
 
-1. Set up your environment variables:
-   - Create a `.env` file in the root directory
-   - Add your OpenAI API key: `OPENAI_API_KEY="your_key_here"`
-   - Other configuration parameters can be modified in `backend/core/config.py`
+1. Environment Files:
+   - `.env.example`: Template file showing required environment variables
+   - `.env`: Your actual environment file (needs to be created, not version controlled)
 
-Note: If you used the `setup_project.bat` script, it will have prompted you to create the `.env` file and add your API key.
+2. Setting up your environment:
+   ```bash
+   # 1. Copy the example file
+   cp .env.example .env
+   
+   # 2. Edit .env file and add your actual API key
+   OPENAI_API_KEY="your_actual_key_here"
+   ```
+
+### Project Structure Details
+
+```
+backend/
+├── api/
+│   └── v1/
+│       └── endpoints.py          # FastAPI route definitions and API endpoints
+├── core/
+│   ├── config.py                # Application configuration and env management
+│   └── models.py                # Core data models and Pydantic schemas
+├── database/
+│   ├── models.py                # SQLAlchemy database models
+│   ├── database.py              # Database connection and session management
+│   └── crud.py                  # Database CRUD operations
+├── processing_pipeline/
+│   ├── a_structuring.py         # Document preprocessing and structuring
+│   ├── b_extraction.py          # LLM-based data extraction
+│   └── c_validation.py          # Data validation and error checking
+├── utils/
+│   └── file_handler.py          # File upload and management utilities
+└── main.py                      # FastAPI application entry point
+
+frontend/
+└── frontend_app.py              # Streamlit web interface
+```
+
+### Key Components
+
+1. **Database Layer** (`backend/database/`):
+   - `models.py`: Database schema definitions
+     - `Statement`: Stores bank statement metadata
+     - `Transaction`: Stores individual transactions
+   - `database.py`: Database connection management
+     - SQLite configuration
+     - Session management
+     - Connection pooling
+   - `crud.py`: Database operations
+     - Statement creation/retrieval
+     - Transaction management
+     - Data persistence logic
+   - `__init__.py`: Package initialization
+
+2. **Configuration** (`backend/core/`):
+   - `config.py`: Environment and settings management
+     - Environment variable handling
+     - Application settings
+     - Pydantic-based configuration
+   - `models.py`: Pydantic models for data validation
+
+3. **Processing Pipeline** (`backend/processing_pipeline/`):
+   - `a_structuring.py`: Document preprocessing
+     - PDF/Image parsing
+     - Text extraction
+     - Layout analysis
+   - `b_extraction.py`: Data extraction
+     - OpenAI API integration
+     - Pattern recognition
+     - Data structuring
+   - `c_validation.py`: Data validation
+     - Format verification
+     - Data consistency checks
+     - Error handling
+   - `__init__.py`: Pipeline initialization
+
+4. **API Layer** (`backend/api/v1/`):
+   - `endpoints.py`: REST API endpoints
+     - File upload handling
+     - Processing status tracking
+     - Data retrieval methods
+     - Error handling
+
+5. **Utility Functions** (`backend/utils/`):
+   - `file_handler.py`: File management
+     - Temporary file storage
+     - File upload processing
+     - Clean-up routines
+     - UUID-based file naming
+
+6. **Frontend Application** (`frontend/`):
+   - `frontend_app.py`: Streamlit interface
+     - User interface components
+     - File upload functionality
+     - Data visualization
+     - Interactive analysis features
+
+7. **Project Root**:
+   - `main.py`: FastAPI application entry point
+   - `requirements.txt`: Project dependencies
+   - `.env.example`: Environment template
+   - `.env`: Local environment configuration
+   - `setup_project.bat`: Automated setup script
+   - `.gitignore`: Git exclusion patterns
+
+8. **Data Storage**:
+   - `temp_uploads/`: Temporary file storage
+   - `intellistatement.db`: SQLite database file (created on first run)
 
 ### Running the Application
 

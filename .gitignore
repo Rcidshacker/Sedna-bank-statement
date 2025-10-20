@@ -9,4 +9,4 @@ __pycache__/
 temp_uploads/
 
 # Ignore the SQLite database file
-intellistatement.db
+intellistatement.db 
